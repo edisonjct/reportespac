@@ -99,7 +99,7 @@ $(function () {
                 data: archivos,
                 processData: false,
                 beforeSend: function () {
-                    $('#respuesta').html('<center><img src="../recursos/cargando2.gif" width="50" heigh="50"></center>');
+                    $('#respuesta').html('<center><img src="../recursos/cargando2.gif" width="100"></center>');
                 },
                 success: function (data) {
                     if (data == 'OK') {
