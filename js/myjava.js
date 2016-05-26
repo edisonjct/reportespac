@@ -17,8 +17,8 @@ $(function () {
         });
         return false;
     });
-    
-     $('#bt-campmm').on('click', function () {
+
+    $('#bt-campmm').on('click', function () {
         var desde = $('#bd-desde').val();
         var hasta = $('#bd-hasta').val();
         var IDB = $('#IDB').val();
@@ -36,7 +36,7 @@ $(function () {
         });
         return false;
     });
-    
+
     $('#bt-campmmADM').on('click', function () {
         var desde = $('#bd-desde').val();
         var hasta = $('#bd-hasta').val();
@@ -54,7 +54,7 @@ $(function () {
         });
         return false;
     });
-    
+
     $('#bt-RepCatPGS').on('click', function () {
         var IDB = $('#IDB').val();
         var clientes = $('#cb-clientesgs').val();
@@ -70,7 +70,7 @@ $(function () {
         });
         return false;
     });
-    
+
     $("#cb-clientesgs").change(function () {
         $.ajax({
             url: "../php/procesaclientesgs.php",
@@ -81,7 +81,48 @@ $(function () {
             }
         })
     });
-       
+
+    $('#submit').on('click', function () {
+        var comprobar = $('#csv').val().length;
+        var IDB = $('#IDB').val();
+        if (comprobar > 0) {
+            var formulario = $('#subida');
+            var archivos = new FormData();
+            var url = '../php/importarCSV.php?IDB='+IDB;
+            for (var i = 0; i < (formulario.find('input[type=file]').length); i++) {
+                archivos.append((formulario.find('input[type="file"]:eq(' + i + ')').attr("name")), ((formulario.find('input[type="file"]:eq(' + i + ')')[0]).files[0]));
+            }
+            $.ajax({
+                url: url,
+                type: 'POST',
+                contentType: false,
+                data: archivos,
+                processData: false,
+                beforeSend: function () {
+                    $('#respuesta').html('<center><img src="../recursos/cargando2.gif" width="50" heigh="50"></center>');
+                },
+                success: function (data) {
+                    if (data == 'OK') {
+                        $('#respuesta').html(data);
+                        return false;
+                    } else {
+                        $('#respuesta').html(data);
+                        return false;
+                    }
+                }
+            });
+
+            return false;
+
+        } else {
+
+            alert('Selecciona un archivo CSV para importar');
+
+            return false;
+
+        }
+    });
+
 
 
 });
@@ -136,7 +177,7 @@ function eliminarProducto(codpro, codcte) {
     }
 }
 
-function editarProducto(codprod,codcte) {
+function editarProducto(codprod, codcte) {
     $('#formulario')[0].reset();
     var url = '../php/MostrarProGraSup.php';
     $.ajax({
