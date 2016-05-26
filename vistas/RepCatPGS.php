@@ -11,9 +11,19 @@ include '../php/conexion.php';
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/bootstrap-select.css">        
         <link rel="stylesheet" type="text/css" href="../css/estilo.css">
-        <script src="../js/jquery.js"></script>
-        <script src="../js/myjava.js"></script>
-        <script src="../js/bootstrap-select.js"></script>        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-latest.js"></script>
+        <script type="text/javascript" src="../js/jquery.tablesorter.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() 
+            { 
+                $("#myTable").tablesorter(); 
+            } 
+        );
+        </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>              
+        <script type="text/javascript" src="../js/myjava.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-select.js"></script>
         
     </head>
     <body>
@@ -105,5 +115,6 @@ include '../php/conexion.php';
         </div>
       </div>
         <script src="../js/bootstrap.min.js"></script>
+         
     </body>
 </html>

@@ -43,8 +43,8 @@ if (strlen($clientes) <= 0) {
         </tr>';
     if (mysql_num_rows($resultado) > 0) {
         while ($row = mysql_fetch_array($resultado)) {
-            $contador = $contador + 1;         
-           echo '<tr>
+            $contador = $contador + 1;
+            echo '<tr>
             <td>' . $contador . '</td>
             <td>' . $row["codprod"] . '</td>
             <td>' . $row["titulo"] . '</td>
@@ -54,16 +54,19 @@ if (strlen($clientes) <= 0) {
             <td>' . $row["editorial"] . '</td> 
             <td>' . $row["provedor"] . '</td>
             <td>
-                <a href="javascript:editarProducto('.$row['codprod'].','.$row['codcte'].');" class="glyphicon glyphicon-edit"></a>
-                <a href="javascript:eliminarProducto('.$row['codprod'].','.$row['codcte'].');" class="glyphicon glyphicon-remove-circle"></a>
+                <a href="javascript:editarProducto(' . $row['codprod'] . ',' . $row['codcte'] . ');" class="glyphicon glyphicon-edit"></a>
+                <a href="javascript:eliminarProducto(' . $row['codprod'] . ',' . $row['codcte'] . ');" class="glyphicon glyphicon-remove-circle"></a>
             </td>
           </tr>';
         }
-        
     } else {
         echo '<tr>
 		<td colspan="9">No se encontraron resultados</td>
 	</tr>';
     }
     echo '</table>';
+    echo '<form id="form1" name="form1" method="post" action="../php/ExcelProdGS.php?IDB=' . $IDB . '&clientes=' . $clientes . '">
+            <center><button class="btn btn-success">Excel</button></center>
+            <br><br>
+        </form>';
 }
