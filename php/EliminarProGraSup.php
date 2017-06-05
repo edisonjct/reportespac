@@ -2,8 +2,8 @@
 
 include('conexionC.php');
 
-$codpro = $_GET['codpro'];
-$codcte = $_GET['codcte'];
+$codpro   = $_GET['codpro'];
+$codcte   = $_GET['codcte'];
 $contador = 0;
 
 mysql_query("DELETE FROM productos_grandes_superficies WHERE codprod = '$codpro' AND codcte='$codcte'");

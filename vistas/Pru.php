@@ -1,15 +1,40 @@
-<html><head>
-<script language="JavaScript" src=".../js/resize.js" type="text/javascript"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>MISTERBOOKS S.A. - Rangos para Facturacion</title></head>
-<frameset rows="100,*,0,28" cols="*" framespacing="0" frameborder="NO" border="0">
- <frame src=".../barra.php?ID=1088&amp;IDB=03" name="topFrame" scrolling="NO" noresize="">
-  <frame src="fa77.php?ID=1088&amp;IDB=03&amp;pg=faprog/fa41.php&amp;tr=99&amp;Sbod=" name="principal">
-    <frame src="../blank.htm" name="archivo">
-  <frame src=".../baseconsulta.php?ID=1088&amp;IDB=03&amp;pg=fa77fr.php&amp;pg2=faprog/fa77.php?pg=faprog/fa41.php&amp;tr=99" name="bottomFrame" scrolling="NO" noresize="">
-</frameset>
-<noframes>
-&lt;body&gt;
-&lt;/body&gt;
-</noframes>
-</html>
+<?php
+$Name = 'prueba.xml';
+$FileName = "./$Name";
+$Header = '';
+$Header .= "\r\n";
+//Descarga el archivo desde el navegador
+/*header('Expires: 0');
+header('Cache-control: private');
+header ("Content-type: text/xml"); // Archivo xml
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Content-Description: File Transfer');
+header('Last-Modified: '.date('D, d M Y H:i:s'));
+header('Content-Disposition: attachment; filename="'.$Name.'"');
+header("Content-Transfer-Encoding: binary");
+*/
+$c = mysql_connect("localhost", "root","");
+mysql_select_db("mrbooks");
+
+$lista="SELECT * FROM maefac";
+$consulta = mysql_query($lista);
+
+header ("Content-type: text/xml");
+
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+echo "<autorizacion>";
+while ($dato=mysql_fetch_row($consulta)){
+ echo "<kit>";
+    echo "<linea>$dato[0]</linea>";
+    echo "<marca>$dato[1]</marca>";
+    echo "<tipo>$dato[2]</tipo>";
+    echo "<modelo>$dato[3]</modelo>";
+    echo "<fecha>$dato[4]</fecha>";
+    echo "<motor>$dato[5]</motor>"; 
+ echo "</kit>";  
+}
+
+echo"</autorizacion>";
+
+mysql_close();
+

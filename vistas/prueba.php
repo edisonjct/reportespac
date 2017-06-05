@@ -1,32 +1,43 @@
-
-
+<?php
+include_once '../php/conexion.php';
+$IDB = $_GET['IDB'];
+$ID = $_GET['ID'];
+?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Plantilla básica de Bootstrap</title>
- 
-    <!-- CSS de Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
- 
-    <!-- librerías opcionales que activan el soporte de HTML5 para IE8 -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>¡Hola mundo!</h1>
-    
-    <!-- Librería jQuery requerida por los plugins de JavaScript -->
-    <script src="http://code.jquery.com/jquery.js"></script>
- 
-    <!-- Todos los plugins JavaScript de Bootstrap (también puedes
-         incluir archivos JavaScript individuales de los únicos
-         plugins que utilices) -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+    <head>
+        <title><?php echo $nombreb; ?></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-select.css">        
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+        <link href="../css/bootstrap-datetimepicker.css" rel="stylesheet">  
+        <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>        
+        <script type="text/javascript" src="../js/jquery.js"></script>             
+        <script type="text/javascript" src="../js/bootstrap-select.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/moment.js"></script>        
+        <script src="../js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="../js/myjava.js"></script>
+    </head>
+    <body>
+        <div>
+            <?php include_once './Header.php'; ?>
+        </div>
+        <div class="container">             
+            <form class="form-inline" role="form" method="GET" id="formbusqueda">
+                <center>
+                    <input class="hide" type="text" required="required" readonly="readonly" id="IDB" value=<?php echo $IDB; ?> >
+                    <input class="hide" type="text" required="required" readonly="readonly" id="ID" value=<?php echo $ID; ?> >
+                    
+                    <button type="button" class="btn btn-group" onclick="pruebacheck()">
+                        <span class="glyphicon glyphicon-search"></span> Buscar
+                    </button>
+                </center>
+                <br>
+                <div class="table-responsive" id="agrega-registros"></div>
+            </form>            
+        </div>  
+    </body>            
 </html>
-

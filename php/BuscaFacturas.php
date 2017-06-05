@@ -35,18 +35,24 @@ $resultado = mysql_query($registro, $conexion);
 
 echo '<table class="table table-striped table-condensed table-hover" >
         <tr>
-        <th width="10">#</th>
-        <th width="20">FECHA</th>
-          <th width="300">FACTURA</th>
-          <th width="150">VENTABTA</th>
-          <th width="150">DESCUENTO</th>  
-          <th width="150">VENTANETA</th>
-          <th width="50">IVA</th>
-          <th width="100">TOTAL</th>
-          <th width="100">CEDULA</th>
-          <th width="350">NOMBRE</th>          
+        <th>#</th>
+        <th>FECHA</th>
+          <th>FACTURA</th>
+          <th>VENTABTA</th>
+          <th>DESCUENTO</th>  
+          <th>VENTANETA</th>
+          <th>IVA</th>
+          <th>TOTAL</th>
+          <th>CEDULA</th>
+          <th>NOMBRE</th>
+          <th width="5">
+            <a href="../php/BuscaFacturasE.php?IDB=' . $IDB . '&condicion=' . $condicion . '&desde='.$desde.'&hasta='.$hasta.'"><img src="../recursos/excel.png" width="20" height="20"></a>
+          </th>
+          <th width="5">
+            <a href="javascript:window.print(); void 0;"><img src="../recursos/printer.png" border="0" width="20" height="20"></a>
+          </th>
         </tr>';
-        $$ventab = 0;
+        $ventab = 0;
         $contador = 0;
         $desceunto = 0;
         $ventan = 0;
@@ -61,16 +67,16 @@ if (mysql_num_rows($resultado) > 0) {
         $iva = $iva + $row['IVA'];
         $total = $total + $row['TOTAL'];
         echo '<tr>
-        <td><h6>' . $contador . '</h6></td>    
-        <td><h6>' . $row['FECHA'] . '</h6></td>
-        <td><h6>' . $row['FACTURA'] . '</h6></td>     
-        <td><h6>' . number_format($row['VENTABTA'], 2, '.', ',') . '</h6></td>
-        <td><h6>' . number_format($row['DESCUENTO'], 2, '.', ',') . '</h6></td>
-        <td><h6>' . number_format($row['VENTANET'], 2, '.', ',') . '</h6></td>
-        <td><h6><b>' . number_format($row['IVA'], 2, '.', ',') . '</b></h6></td>
-        <td><h6><b>' . number_format($row['TOTAL'], 2, '.', ',') . '</b></h6></td>
-        <td><h6>' . $row['CEDULA'] . '</h6></td>
-        <td><h6>' . $row['NOMBRE'] . '</h6></td>        
+        <td>' . $contador . '</td>    
+        <td>' . $row['FECHA'] . '</td>
+        <td>' . $row['FACTURA'] . '</td>     
+        <td>' . number_format($row['VENTABTA'], 2, '.', ',') . '</td>
+        <td>' . number_format($row['DESCUENTO'], 2, '.', ',') . '</td>
+        <td>' . number_format($row['VENTANET'], 2, '.', ',') . '</td>
+        <td><b>' . number_format($row['IVA'], 2, '.', ',') . '</b></td>
+        <td><b>' . number_format($row['TOTAL'], 2, '.', ',') . '</b></td>
+        <td>' . $row['CEDULA'] . '</td>
+        <td colspan="3">' . $row['NOMBRE'] . '</td>       
         </tr>';
     }
     echo '<tr>
@@ -87,7 +93,7 @@ if (mysql_num_rows($resultado) > 0) {
         </tr>';
 } else {
     echo '<tr>
-		<td colspan="10">No se encontraron resultados</td>
+		<td colspan="12">No se encontraron resultados</td>
 	</tr>';
 }
 echo '</table>';

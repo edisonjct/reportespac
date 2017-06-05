@@ -1,12 +1,11 @@
 <?php
 
 $codigo = $_GET['codigo'];
-$titulo = $_GET['titulo'];
 $IDB = $_GET['IDB'];
-$UID = $_GET['UID'];
+$ID = $_GET['ID'];
 include('conexion.php');
 
-switch ($codigo) {
+switch (is_numeric($codigo)) {
     case (true):
         $registro = "SELECT
         m.codprod01 AS interno,
@@ -47,7 +46,7 @@ switch ($codigo) {
         INNER JOIN editoriales e ON m.infor02 = e.codigo
         INNER JOIN categorias c ON m.catprod01 = c.codcate
         LEFT JOIN maepag pr ON m.proved101 = pr.codcte01
-        WHERE c.tipocate = 02 AND m.desprod01 LIKE '%$titulo%' ORDER BY m.desprod01 ASC";
+        WHERE c.tipocate = 02 AND m.desprod01 LIKE '%$codigo%' ORDER BY m.desprod01 ASC";
         break;
 }
 
@@ -55,8 +54,8 @@ switch ($codigo) {
 $resultado = mysql_query($registro, $conexion);
 echo '<table class="table table-striped table-condensed table-hover" >
         <tr>
-        <th>Cod. Inte</th>
-        <th>Cod. Barras</th>
+        <th>Cod.Inte</th>
+        <th>Cod.Barras</th>
           <th>Titulo</th>
           <th>Autor</th>
           <th>Editorial</th>  
@@ -80,7 +79,7 @@ if (mysql_num_rows($resultado) > 0) {
                 <td>' . $row['pvp'] . '</td>
                 <td>' . $row['cantidad'] . '</td>
                 <td>' . $row['ubicacion'] . '</td>
-                <td><a href="javascript:editarProducto(' . $row['interno'] . ');"><img src="'.'../portadas/'. $row['portada'] . '"  width="40" height="60"></a></td>
+                <td><a href="javascript:editarProductoinv(' . $row['interno'] . ',' . $IDB . ',' . $ID . ');"><img src="' . '../portadas/' . $row['portada'] . '"  width="40" height="60"></a></td>
             </tr>';
     }
 } else {

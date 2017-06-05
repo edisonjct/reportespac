@@ -1,4 +1,6 @@
 <?php
+$IDB = $_GET['IDB'];
+$ID = $_GET['ID'];
 include '../php/conexion.php';
 ?>
 <!DOCTYPE html>
@@ -19,12 +21,13 @@ include '../php/conexion.php';
         <div class="container">    
             <form class="form-inline" role="form" method="GET">
                 <center>      
-                    <h2><?php echo $nombreb; ?></h2>
-                    <input class="hide" type="text" required="required" readonly="readonly" id="IDB" value=<?php echo $base; ?> />
+                    <input class="hide" type="text" required="required" readonly="readonly" id="IDB" value=<?php echo $IDB; ?> />
+                    <input class="hide" type="text" required="required" readonly="readonly" id="ID" value=<?php echo $ID; ?> />
+                    <br>
                     <div class="form-group">                        
                         <select required="required" id="cb-condicion" class="selectpicker" data-live-search="true" data-selected-text-format="count > 3" data-toggle="tooltip" title="Condicion de Pago">
                             <?php
-                            $query = mysql_query("SELECT t.codtab AS codigo, t.nomtab AS nombre FROM maetab t WHERE t.numtab = '72' AND t.ad5tab = '0' AND t.codtab <> ''");
+                            $query = mysql_query("SELECT t.codtab AS codigo, t.nomtab AS nombre FROM maetab t WHERE t.numtab = '72' AND t.ad5tab = '0' AND t.codtab <> '' AND t.codtab <> '1' AND t.codtab <> '2' ");
                             if (mysql_num_rows($query) > 0) {
                                 while ($row = mysql_fetch_array($query)) {
                                     echo "<option value='" . $row['codigo'] . "'>" . $row['nombre'] . "</option>\n";

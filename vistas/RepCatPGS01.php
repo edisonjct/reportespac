@@ -1,6 +1,6 @@
 <?php
 $IDB = $_GET['IDB'];
-$UID = $_GET['UID'];
+$UID = $_GET['ID'];
 include_once '../php/conexion.php';
 ?>
 <!DOCTYPE html>
@@ -12,11 +12,11 @@ include_once '../php/conexion.php';
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/bootstrap-select.css">        
         <link rel="stylesheet" type="text/css" href="../css/estilo.css">
-        <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>        
+        <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>        
         <script type="text/javascript" src="../js/jquery.js"></script>              
         <script type="text/javascript" src="../js/myjava.js"></script>
         <script type="text/javascript" src="../js/bootstrap-select.js"></script>
-        
+
     </head>
     <body>
         <br>
@@ -44,68 +44,68 @@ include_once '../php/conexion.php';
         </div>
 
         <div class="modal fade" id="registra-producto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a class="btn btn-danger">X</a></button>
-              <h4 class="modal-title" id="myModalLabel"><b>Edita un Producto Categorizado</b></h4>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><a class="btn btn-danger">X</a></button>
+                        <h4 class="modal-title" id="myModalLabel"><b>Edita un Producto Categorizado</b></h4>
+                    </div>
+                    <form id="formulario" class="formulario" onsubmit="return agregaRegistro();">
+                        <div class="modal-body">
+                            <table border="0" width="100%">     
+                                <tr>
+                                    <td colspan="2"><input class="hide" type="text" required="required" readonly="readonly" id="cliente" name="cliente" /></td>
+                                    <td><input class="hide" type="text" required="required" readonly="readonly" id="pro" name="pro"/></td>
+                                </tr>                
+                                <tr>
+                                    <td>Codigo: </td>                        
+                                    <td><input class="form-control" type="text" required="required" readonly="readonly" id="codigo" name="codigo"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Titulo: </td>
+                                    <td><input class="form-control" type="text" required="required" readonly="readonly" id="titulo"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Categoria: </td>
+                                    <td><input class="form-control" type="text" required="required" readonly="readonly" id="categoria"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Categoria GS: </td>                        
+                                    <td>
+                                        <select name="categoriags" id="categoriags" class="form-control">
+                                            <option value="0">Selecione Pais</option>
+                                        </select>
+                                    </td>
+                                </tr>                    
+                                <tr>
+                                    <td>Autor: </td>
+                                    <td><input class="form-control" type="text" required="required" readonly="readonly" id="autor"/></td>
+                                </tr> 
+                                <tr>
+                                    <td>Editoria: </td>
+                                    <td><input class="form-control" type="text" required="required" readonly="readonly" id="editorial"/></td>
+                                </tr> 
+                                <tr>
+                                    <td>Provedor: </td>
+                                    <td><input class="form-control" type="text" required="required" readonly="readonly" id="provedor"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div id="mensaje"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="modal-footer">
+                            <input type="submit" value="Registrar" class="btn btn-success" id="reg"/>
+                            <input type="submit" value="Modificar" class="btn btn-warning"  id="edi"/>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <form id="formulario" class="formulario" onsubmit="return agregaRegistro();">
-            <div class="modal-body">
-                <table border="0" width="100%">     
-                     <tr>
-                        <td colspan="2"><input class="hide" type="text" required="required" readonly="readonly" id="cliente" name="cliente" /></td>
-                        <td><input class="hide" type="text" required="required" readonly="readonly" id="pro" name="pro"/></td>
-                     </tr>                
-                    <tr>
-                        <td>Codigo: </td>                        
-                        <td><input class="form-control" type="text" required="required" readonly="readonly" id="codigo" name="codigo"/></td>
-                    </tr>
-                    <tr>
-                        <td>Titulo: </td>
-                        <td><input class="form-control" type="text" required="required" readonly="readonly" id="titulo"/></td>
-                    </tr>
-                    <tr>
-                        <td>Categoria: </td>
-                        <td><input class="form-control" type="text" required="required" readonly="readonly" id="categoria"/></td>
-                    </tr>
-                    <tr>
-                        <td>Categoria GS: </td>                        
-                        <td>
-                            <select name="categoriags" id="categoriags" class="form-control">
-                                <option value="0">Selecione Pais</option>
-                            </select>
-                        </td>
-                    </tr>                    
-                    <tr>
-                        <td>Autor: </td>
-                        <td><input class="form-control" type="text" required="required" readonly="readonly" id="autor"/></td>
-                    </tr> 
-                    <tr>
-                        <td>Editoria: </td>
-                        <td><input class="form-control" type="text" required="required" readonly="readonly" id="editorial"/></td>
-                    </tr> 
-                    <tr>
-                        <td>Provedor: </td>
-                        <td><input class="form-control" type="text" required="required" readonly="readonly" id="provedor"/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <div id="mensaje"></div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            
-            <div class="modal-footer">
-                <input type="submit" value="Registrar" class="btn btn-success" id="reg"/>
-                <input type="submit" value="Modificar" class="btn btn-warning"  id="edi"/>
-            </div>
-            </form>
-          </div>
         </div>
-      </div>
         <script src="../js/bootstrap.min.js"></script>
-         
+
     </body>
 </html>
