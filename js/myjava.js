@@ -1,7 +1,7 @@
 $(document).ready();
-$(function() {
+$(function () {
     $('#bs-prod').focus();
-    setInterval(function() {
+    setInterval(function () {
         $('#bs-prod').focus();
     }, 9000);
     $("#select-provedor-internacional").hide();
@@ -12,7 +12,7 @@ $(function() {
     $("#excelordenesconsolidado").hide();
     $("#excelordenesdetallado").hide();
     $("#btn-procesa-script").hide();
-    $('#bt-buscadiftranf').on('click', function() {
+    $('#bt-buscadiftranf').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var estado = $('#cb-estado').val();
@@ -26,7 +26,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&estado=' + estado + '&desde=' + desde + '&hasta=' + hasta + '&bodega=' + bodega,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -36,7 +36,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-busca-doc-consignado').on('click', function() {
+    $('#bt-busca-doc-consignado').on('click', function () {
         var IDB = $('#IDB').val();
         var provedor = $('#txt-provedor-consignado-codigo').val();
         if (provedor != '') {
@@ -46,7 +46,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'proceso=buscardocumentos&IDB=' + IDB + '&provedor=' + provedor,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -56,7 +56,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-buscatipodoc').on('click', function() {
+    $('#bt-buscatipodoc').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var tipo = $('#cb-tipo').val();
@@ -71,7 +71,7 @@ $(function() {
                     type: 'GET',
                     url: url,
                     data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                    success: function(datos) {
+                    success: function (datos) {
                         $('#agrega-registros').html(datos);
                     }
                 });
@@ -83,7 +83,7 @@ $(function() {
                     type: 'GET',
                     url: url,
                     data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                    success: function(datos) {
+                    success: function (datos) {
                         $('#agrega-registros').html(datos);
                     }
                 });
@@ -94,7 +94,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-buscatipodocf').on('click', function() {
+    $('#bt-buscatipodocf').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var tipo = $('#cb-tipo').val();
@@ -109,7 +109,19 @@ $(function() {
                     type: 'GET',
                     url: url,
                     data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                    success: function(datos) {
+                    success: function (datos) {
+                        $('#agrega-registros').html(datos);
+                    }
+                });
+                return false;
+            } else if (admin == 'imagen') {
+                $('#agrega-registros').html('<h2><div align="center"><img src="../recursos/cargando2.gif" width="100" /><div></h2>');
+                var url = '../php/impresiondoc99.php';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
+                    success: function (datos) {
                         $('#agrega-registros').html(datos);
                     }
                 });
@@ -121,7 +133,7 @@ $(function() {
                     type: 'GET',
                     url: url,
                     data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                    success: function(datos) {
+                    success: function (datos) {
                         $('#agrega-registros').html(datos);
                     }
                 });
@@ -132,7 +144,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-buscasaldoproved').on('click', function() {
+    $('#bt-buscasaldoproved').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var desde = $('#desde').val();
@@ -145,7 +157,7 @@ $(function() {
                 type: 'POST',
                 url: url,
                 data: 'provedor=' + provedor + '&desde=' + desde + '&hasta=' + hasta + '&ID=' + ID + '&IDB=' + IDB,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -155,7 +167,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-busca-fac').on('click', function() {
+    $('#bt-busca-fac').on('click', function () {
         var tipo = $('#cmb-tipo').val();
         var bodega = $('#cmb-bodegas').val();
         var desde = $('#desde').val();
@@ -167,7 +179,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'tipo=' + tipo + '&bodega=' + bodega + '&desde=' + desde + '&hasta=' + hasta,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -177,7 +189,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-buscaactivosf').on('click', function() {
+    $('#bt-buscaactivosf').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var ubicacion = $('#cb-ubicacion').val();
@@ -191,7 +203,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&ubicacion=' + ubicacion + '&desde=' + desde + '&hasta=' + hasta + '&grupo=' + grupo,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -201,7 +213,7 @@ $(function() {
             return false;
         }
     });
-    $('#procesafpagos').on('click', function() {
+    $('#procesafpagos').on('click', function () {
         var desde = $('#desde').val();
         var hasta = $('#hasta').val();
         var IDB = $('#IDB').val();
@@ -211,13 +223,13 @@ $(function() {
             type: 'GET',
             url: url,
             data: 'IDB=' + IDB + '&desde=' + desde + '&hasta=' + hasta,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros3').html(datos);
             }
         });
         return false;
     });
-    $('#procesafpagosadm').on('click', function() {
+    $('#procesafpagosadm').on('click', function () {
         var desde = $('#desde').val();
         var IDB = $('#IDB').val();
         $('#agrega-registros4').html('<h2><div align="center"><img src="../recursos/cargando2.gif" width="100" /><div></h2>');
@@ -226,13 +238,13 @@ $(function() {
             type: 'GET',
             url: url,
             data: 'IDB=' + IDB + '&desde=' + desde,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros4').html(datos);
             }
         });
         return false;
     });
-    $('#gt_trancito').on('click', function() {
+    $('#gt_trancito').on('click', function () {
         var result = confirm('Esta Seguro De Guardar los Cambios');
         if (result == false) {
             return false;
@@ -245,14 +257,14 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'IDB=' + IDB + '&transf=' + transf + '&estado=02',
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
             return false;
         }
     });
-    $('#bt-periodofiscal').on('click', function() {
+    $('#bt-periodofiscal').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var periodo = $('#periodo').val();
@@ -267,7 +279,7 @@ $(function() {
                     type: 'GET',
                     url: url,
                     data: 'ID=' + ID + '&IDB=' + IDB + '&periodo=' + periodo,
-                    success: function(datos) {
+                    success: function (datos) {
                         $('#agrega-registros').html(datos);
                     }
                 });
@@ -279,7 +291,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-creditosemp').on('click', function() {
+    $('#bt-creditosemp').on('click', function () {
         var desde = $('#bd-desde').val();
         var hasta = $('#bd-hasta').val();
         var IDB = $('#IDB').val();
@@ -290,13 +302,13 @@ $(function() {
             type: 'GET',
             url: url,
             data: 'desde=' + desde + '&hasta=' + hasta + '&IDB=' + IDB + '&condicion=' + condicion,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
         return false;
     });
-    $('#bt-campmm').on('click', function() {
+    $('#bt-campmm').on('click', function () {
         var desde = $('#desde').val();
         var hasta = $('#hasta').val();
         var IDB = $('#IDB').val();
@@ -309,7 +321,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'desde=' + desde + '&hasta=' + hasta + '&IDB=' + IDB + '&condicion=' + condicion + '&ID=' + ID,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -319,7 +331,7 @@ $(function() {
             return false;
         }
     });
-    $('#bt-campana_mama').on('click', function() {
+    $('#bt-campana_mama').on('click', function () {
         var desde = $('#desde').val();
         var hasta = $('#hasta').val();
         var IDB = $('#IDB').val();
@@ -330,13 +342,13 @@ $(function() {
             type: 'GET',
             url: url,
             data: 'proceso=diamadre2017&desde=' + desde + '&hasta=' + hasta + '&IDB=' + IDB + '&ID=' + ID,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
         return false;
     });
-    $('#crearvista').on('click', function() {
+    $('#crearvista').on('click', function () {
         var locales = $('#locales').val();
         var operador = $('#operador').val();
         var IDB = $('#IDB').val();
@@ -348,7 +360,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'locales=' + locales + '&operador=' + operador + '&IDB=' + IDB + '&cantidad=' + cantidad,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -357,7 +369,7 @@ $(function() {
             alert("Seleccione las bodegas a general");
         }
     });
-    $('#bt-buscaproductosinv').on('click', function() {
+    $('#bt-buscaproductosinv').on('click', function () {
         var ID = $('#ID').val();
         var IDB = $('#IDB').val();
         var codigo = $('#bs-prod').val();
@@ -368,7 +380,7 @@ $(function() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&codigo=' + codigo,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                     $('#bs-prod').focus();
                     $('#bs-prod').val('');
@@ -383,10 +395,10 @@ $(function() {
             return false;
         }
     });
-    $('#bt-recargar').on('click', function() {
+    $('#bt-recargar').on('click', function () {
         location.reload();
     });
-    $('#bt-RepCatPGS').on('click', function() {
+    $('#bt-RepCatPGS').on('click', function () {
         var IDB = $('#IDB').val();
         var clientes = $('#cb-clientesgs').val();
         $('#agrega-registros').html('<h2><div align="center"><img src="../recursos/cargando2.gif" width="100" /><div></h2>');
@@ -395,23 +407,23 @@ $(function() {
             type: 'GET',
             url: url,
             data: 'IDB=' + IDB + '&clientes=' + clientes,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
         return false;
     });
-    $("#cb-clientesgs").change(function() {
+    $("#cb-clientesgs").change(function () {
         $.ajax({
             url: "../php/procesaclientesgs.php",
             type: "GET",
             data: "idcliente=" + $("#cb-clientesgs").val(),
-            success: function(opciones) {
+            success: function (opciones) {
                 $("#categoriags").html(opciones);
             }
         })
     });
-    $('#submit').on('click', function() {
+    $('#submit').on('click', function () {
         var comprobar = $('#csv').val().length;
         var IDB = $('#IDB').val();
         if (comprobar > 0) {
@@ -427,10 +439,10 @@ $(function() {
                 contentType: false,
                 data: archivos,
                 processData: false,
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#respuesta').html('<center><img src="../recursos/cargando2.gif" width="100"></center>');
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data == 'OK') {
                         $('#respuesta').html(data);
                         return false;
@@ -446,7 +458,7 @@ $(function() {
             return false;
         }
     });
-    $('#crearubicaciones').on('click', function() {
+    $('#crearubicaciones').on('click', function () {
         var comprobar = $('#ubicaciones').val().length;
         var IDB = $('#IDB').val();
         if (comprobar > 0) {
@@ -462,10 +474,10 @@ $(function() {
                 contentType: false,
                 data: archivos,
                 processData: false,
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#respuesta').html('<center><img src="../recursos/cargando2.gif" width="100"></center>');
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data == 'OK') {
                         $('#respuesta').html(data);
                         return false;
@@ -481,7 +493,7 @@ $(function() {
             return false;
         }
     });
-    $('#subirautorizaciones').on('click', function() {
+    $('#subirautorizaciones').on('click', function () {
         var comprobar = $('#autorizaciones').val().length;
         var IDB = $('#IDB').val();
         var UID = $('#UID').val();
@@ -500,10 +512,10 @@ $(function() {
                 contentType: false,
                 data: archivos,
                 processData: false,
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#respuesta').html('<center><img src="../recursos/cargando2.gif" width="100"></center>');
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data == 'OK') {
                         $('#respuesta').html(data);
                         return false;
@@ -519,7 +531,7 @@ $(function() {
             return false;
         }
     });
-    $('#subirconteo').on('click', function() {
+    $('#subirconteo').on('click', function () {
         var comprobar = $('#fl-conteo').val().length;
         var bodega = $('#cb-bodega').val();
         if (comprobar > 0) {
@@ -535,10 +547,10 @@ $(function() {
                 contentType: false,
                 data: archivos,
                 processData: false,
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#respuesta').html('<center><img src="../../../recursos/cargando2.gif" width="100"></center>');
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data == 'OK') {
                         $('#respuesta').html(data);
                         return false;
@@ -554,7 +566,7 @@ $(function() {
             return false;
         }
     });
-    $('#nuevo-proforma').on('click', function() {
+    $('#nuevo-proforma').on('click', function () {
         $('#formulario')[0].reset();
         $('#pro').val('Registro');
         $('#cedula').val();
@@ -564,7 +576,7 @@ $(function() {
             backdrop: 'static'
         });
     });
-    $('#buscar_proformas').on('click', function() {
+    $('#buscar_proformas').on('click', function () {
         var cedula = $('#cedula-cli').val();
         var proforma = $('#proforma-cli').val();
         var IDB = $('#IDB').val();
@@ -574,18 +586,18 @@ $(function() {
             type: 'GET',
             url: url,
             data: 'cedula=' + cedula + '&proforma=' + proforma + '&IDB=' + IDB,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
         return false;
     });
-    $("#btnExport").click(function(e) {
+    $("#btnExport").click(function (e) {
         window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#printableArea').html()));
         e.preventDefault();
     });
     $('#codigo-proforma').focus();
-    $('#agregar-codigo-proforma').on('click', function() {
+    $('#agregar-codigo-proforma').on('click', function () {
         var IDB = $('#IDB').val();
         var proforma = $('#proforma').val();
         var idpro = $('#idpro').val();
@@ -607,7 +619,7 @@ $(function() {
                         type: 'GET',
                         url: url,
                         data: 'IDB=' + IDB + '&codigo=' + codigo + '&descuento=' + descuento + '&cantidad=' + cantidad + '&idpro=' + idpro + '&proforma=' + proforma + '&proceso=' + proceso,
-                        success: function(datos) {
+                        success: function (datos) {
                             $('#agrega-detalle-proformas').html(datos);
                             $('#codigo-proforma').focus();
                             $('#codigo-proforma').val('');
@@ -629,7 +641,7 @@ $(function() {
                     type: 'GET',
                     url: url,
                     data: 'IDB=' + IDB + '&codigo=' + codigo + '&descuento=' + descuento + '&cantidad=' + cantidad + '&idpro=' + idpro + '&proforma=' + proforma + '&proceso=' + proceso,
-                    success: function(datos) {
+                    success: function (datos) {
                         $('#agrega-detalle-proformas').html(datos);
                         $('#codigo-proforma').focus();
                         $('#codigo-proforma').val('');
@@ -642,7 +654,7 @@ $(function() {
         }
         return false;
     });
-    $("#cb-tipo-provedor").change(function() {
+    $("#cb-tipo-provedor").change(function () {
         var tipo = $("#cb-tipo-provedor").val();
         if (tipo == '0001') {
             $("#select-provedor-internacional").show();
@@ -663,7 +675,7 @@ $(function() {
         }
         return false;
     });
-    $("#txt-provedor-nacional").keyup(function() {
+    $("#txt-provedor-nacional").keyup(function () {
         var IDB = $('#IDB').val();
         var tipo = $('#cb-tipo-provedor').val();
         var key = $('#txt-provedor-nacional').val();
@@ -671,10 +683,10 @@ $(function() {
             type: "GET",
             url: "../php/buscarprovedor.php",
             data: 'keyword=' + key + '&IDB=' + IDB + '&tipo=' + tipo,
-            beforeSend: function() {
+            beforeSend: function () {
                 $("#txt-provedor-nacional").css("background", "#FFF url(../recursos/LoaderIcon.gif) no-repeat 165px");
             },
-            success: function(data) {
+            success: function (data) {
                 $("#resultado-provedor").show();
                 $("#resultado-provedor").html(data);
                 $("#txt-provedor-nacional").css("background", "#FFF");
@@ -683,17 +695,17 @@ $(function() {
             }
         });
     });
-    $("#txt-provedor-consignado").keyup(function() {
+    $("#txt-provedor-consignado").keyup(function () {
         var IDB = $('#IDB').val();
         var provedor = $('#txt-provedor-consignado').val();
         $.ajax({
             type: "GET",
             url: "../php/repdoccon02.php?proceso=buscarprovedor",
             data: 'provedor=' + provedor + '&IDB=' + IDB,
-            beforeSend: function() {
+            beforeSend: function () {
                 $("#txt-provedor-consignado").css("background", "#FFF url(../recursos/LoaderIcon.gif) no-repeat 165px");
             },
-            success: function(data) {
+            success: function (data) {
                 $("#resultado-provedor-consignado").show();
                 $("#resultado-provedor-consignado").html(data);
                 $("#txt-provedor-consignado").css("background", "#FFF");
@@ -702,13 +714,13 @@ $(function() {
             }
         });
     });
-    $('#select-ordenes-general').on('click', function() {
+    $('#select-ordenes-general').on('click', function () {
         $("#radio-tipo").show();
         $("#procesa-ordenes").show();
         $("#excelordenesconsolidado").hide();
         $("#excelordenesdetallado").hide();
     });
-    $('#procesar-ordenes-compras').on('click', function() {
+    $('#procesar-ordenes-compras').on('click', function () {
         var IDB = $('#IDB').val();
         var ordenes = $('#select-ordenes').val();
         var tipo = $('#cb-tipo-provedor').val();
@@ -718,14 +730,14 @@ $(function() {
             url: '../php/procesaordenes_1.php?op=1',
             type: 'GET',
             data: 'IDB=' + IDB + '&ordenes=' + ordenes + '&tipo=' + tipo + '&opcion=' + op,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
                 $("#excelordenesconsolidado").show();
                 $("#excelordenesdetallado").hide();
             }
         });
     });
-    $('#procesar-compras-detallado').on('click', function() {
+    $('#procesar-compras-detallado').on('click', function () {
         var IDB = $('#IDB').val();
         var ordenes = $('#select-ordenes').val();
         var tipo = $('#cb-tipo-provedor').val();
@@ -734,14 +746,14 @@ $(function() {
             url: '../php/procesaordenes_1.php?op=2',
             type: 'GET',
             data: 'IDB=' + IDB + '&ordenes=' + ordenes + '&tipo=' + tipo,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
                 $("#excelordenesconsolidado").hide();
                 $("#excelordenesdetallado").show();
             }
         });
     });
-    $("#btnExport-proformas").click(function(e) {
+    $("#btnExport-proformas").click(function (e) {
         window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#printableArea').html()));
         e.preventDefault();
     });
@@ -769,7 +781,7 @@ function agregaRegistro() {
         type: 'GET',
         url: url,
         data: $('#formulario').serialize(),
-        success: function(registro) {
+        success: function (registro) {
             if ($('#pro').val() == 'Registro') {
                 $('#formulario')[0].reset();
                 $('#mensaje').addClass('bien').html('Registro completado con exito').show(200).delay(2500).hide(200);
@@ -791,7 +803,7 @@ function agregaProformas() {
         type: 'GET',
         url: url,
         data: $('#formulario').serialize(),
-        success: function(registro) {
+        success: function (registro) {
             $('#formulario')[0].reset();
             $('#mensaje').addClass('bien').html('Proforma Ingresada con exito').show(200).delay(2500).hide(200);
             $('#agrega-registros').html(registro);
@@ -808,7 +820,7 @@ function eliminarProducto(codpro, codcte) {
             type: 'GET',
             url: url,
             data: 'codpro=' + codpro + '&codcte=' + codcte,
-            success: function(registro) {
+            success: function (registro) {
                 $('#agrega-registros').html(registro);
                 return false;
             }
@@ -828,7 +840,7 @@ function eliminarProforma(pro, cedu) {
             type: 'GET',
             url: url,
             data: 'cedula=' + cedu + '&proforma=' + pro + '&IDB=' + IDB + '&proceso=cabecera',
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
@@ -848,7 +860,7 @@ function eliminarProductoProforma(pro, codigo) {
             type: 'GET',
             url: url,
             data: 'codigo=' + codigo + '&proforma=' + pro + '&IDB=' + IDB + '&proceso=detalle',
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-detalle-proformas').html(datos);
             }
         });
@@ -865,7 +877,7 @@ function editarProducto(codprod, codcte) {
         type: 'GET',
         url: url,
         data: 'codprod=' + codprod + '&codcte=' + codcte,
-        success: function(valores) {
+        success: function (valores) {
             var datos = eval(valores);
             $('#reg').hide();
             $('#edi').show();
@@ -896,7 +908,7 @@ function editarProductoinv(codigo, IDB, ID) {
         type: 'GET',
         url: url,
         data: 'codigo=' + codigo + '&IDB=' + IDB + '&ID=' + ID,
-        success: function(valores) {
+        success: function (valores) {
             var datos = eval(valores);
             $('#reg').hide();
             $('#edi').show();
@@ -950,7 +962,7 @@ function cargaproformas() {
         type: 'GET',
         url: url,
         data: 'IDB=' + IDB + '&codigo=' + codigo + '&descuento=' + descuento + '&cantidad=' + cantidad + '&idpro=' + idpro + '&proforma=' + proforma + '&proceso=' + proceso,
-        success: function(datos) {
+        success: function (datos) {
             $('#agrega-detalle-proformas').html(datos);
             $('#codigo-proforma').focus();
             $('#codigo-proforma').val('');
@@ -976,7 +988,7 @@ function cargaventadiaria() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -988,7 +1000,7 @@ function cargaventadiaria() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -1015,7 +1027,19 @@ function cargaventadiariaf() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                success: function(datos) {
+                success: function (datos) {
+                    $('#agrega-registros').html(datos);
+                }
+            });
+            return false;
+        } else if (admin == 'imagen') {
+            $('#agrega-registros').html('<h2><div align="center"><img src="../recursos/cargando2.gif" width="100" /><div></h2>');
+            var url = '../php/impresiondoc99.php';
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -1027,7 +1051,7 @@ function cargaventadiariaf() {
                 type: 'GET',
                 url: url,
                 data: 'ID=' + ID + '&IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-                success: function(datos) {
+                success: function (datos) {
                     $('#agrega-registros').html(datos);
                 }
             });
@@ -1086,7 +1110,7 @@ function selectprovedor(nombre, codigo) {
         url: "../php/procesaordenes.php?idpro=1",
         type: "GET",
         data: "provedor=" + $("#txt-provedor-nacional-codigo").val() + '&IDB=' + IDB + '&imp=' + imp + '&desde=' + desde + '&hasta=' + hasta,
-        success: function(opciones) {
+        success: function (opciones) {
             $("#select-ordenes").html(opciones);
         }
     });
@@ -1108,7 +1132,7 @@ function selectimportacion() {
         url: "../php/procesaordenes.php?idpro=2",
         type: "GET",
         data: "provedor=" + $("#txt-provedor-nacional-codigo").val() + '&IDB=' + IDB + '&imp=' + imp + '&desde=' + desde + '&hasta=' + hasta,
-        success: function(opciones) {
+        success: function (opciones) {
             $("#select-ordenes").html(opciones);
         }
     });
@@ -1124,7 +1148,7 @@ function selectinternacional() {
         url: "../php/procesaordenes.php?idpro=3",
         type: "GET",
         data: "provedor=" + $("#txt-provedor-nacional-codigo").val() + '&IDB=' + IDB + '&imp=' + imp + '&desde=' + desde + '&hasta=' + hasta,
-        success: function(opciones) {
+        success: function (opciones) {
             $("#cb-importacion").html(opciones);
         }
     });
@@ -1138,7 +1162,7 @@ function cargar_documentos_electronicos() {
         url: '../php/procesa_docelectronicos.php?proceso=02',
         type: 'GET',
         data: 'IDB=' + IDB + '&tipo=' + tipo,
-        success: function(datos) {
+        success: function (datos) {
             $('#agrega-registros').html(datos);
         }
     });
@@ -1154,7 +1178,7 @@ function updatedocelectronicos() {
             url: '../php/procesa_docelectronicos.php?proceso=01',
             type: 'GET',
             data: 'IDB=' + IDB + '&tipo=' + tipo,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
                 $("#btn-procesa-script").show();
             }
@@ -1175,7 +1199,7 @@ function llamascriptactualizaautorizacion() {
             url: '../../../FTP/php/download_ajax.php',
             type: 'GET',
             data: 'IDB=' + IDB + '&ID=1088&manual=1',
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
@@ -1197,7 +1221,7 @@ function bt_carga_documentos_electronicos() {
             url: '../php/repdocfacelec01.php',
             type: 'GET',
             data: 'IDB=' + IDB + '&tipo=' + tipo + '&desde=' + desde + '&hasta=' + hasta,
-            success: function(datos) {
+            success: function (datos) {
                 $('#agrega-registros').html(datos);
             }
         });
@@ -1223,7 +1247,7 @@ function recargarcampana() {
         type: 'GET',
         url: url,
         data: 'proceso=diamadre2017&desde=' + desde + '&hasta=' + hasta + '&IDB=' + IDB + '&ID=' + ID,
-        success: function(datos) {
+        success: function (datos) {
             $('#agrega-registros').html(datos);
         }
     });
@@ -1232,4 +1256,12 @@ function recargarcampana() {
 
 function refresh() {
     location.reload(true);
+}
+
+function eliminarfp(codtmp, fp) {
+    alert(fp);
+}
+
+function eliminarfp2() {
+    alert("2");
 }

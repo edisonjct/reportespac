@@ -6,12 +6,12 @@
  * and open the template in the editor.
  */
 
-include('conexion.php');
+include 'conexion.php';
 
 $desde = $_GET['desde'];
 $hasta = $_GET['hasta'];
-$IDB = $_GET['IDB'];
-$tipo = $_GET['tipo'];
+$IDB   = $_GET['IDB'];
+$tipo  = $_GET['tipo'];
 
 switch ($tipo) {
     case '80':
@@ -42,11 +42,11 @@ switch ($tipo) {
             ORDER BY d.FECMOV03 DESC,usuario";
         $resultado = mysql_query($registro, $conexion);
         echo '<table class="table table-striped table-condensed table-hover" >
-                <tr>        
+                <tr>
                   <th>TIPO</th>
                   <th>FACTURA</th>
                   <th>FECHA</th>
-                  <th>RUC</th>  
+                  <th>RUC</th>
                   <th>NOMBRE</th>
                   <th>CANTIDAD</th>
                   <th>VTA.BTA</th>
@@ -54,16 +54,16 @@ switch ($tipo) {
                   <th>VTA.NET</th>
                   <th>IVA</th>
                   <th>TOTAL</th>
-                  <th>USUARIO</th> 
+                  <th>USUARIO</th>
                   <th></th>
                 </tr>';
         if (mysql_num_rows($resultado) > 0) {
             while ($row = mysql_fetch_array($resultado)) {
-                echo '<tr> 
+                echo '<tr>
                     <td class="success"><b>' . $row['TIPO'] . '</b></td>
-                    <td class="success"><b>' . $row['DOCUMENTO'] . '</b></td>  
+                    <td class="success"><b>' . $row['DOCUMENTO'] . '</b></td>
                     <td class="success">' . $row['FECHA'] . '</td>
-                    <td class="success">' . $row['CEDULA'] . '</td>  
+                    <td class="success">' . $row['CEDULA'] . '</td>
                     <td class="success">' . $row['NOMBRE'] . '</td>
                     <td class="success">' . number_format($row['cantidad'], 0, '.', ',') . '</td>
                     <td class="success">' . number_format($row['VENTBTA'], 2, '.', ',') . '</td>
@@ -72,13 +72,13 @@ switch ($tipo) {
                     <td class="success"><b>' . number_format($row['IVA'], 2, '.', ',') . '</b></td>
                     <td class="success"><b>' . number_format($row['TOTAL'], 2, '.', ',') . '</b></td>
                     <td class="success">' . $row['usuario'] . '</td>';
-                echo "<td class='success'><a href='../php/impresiondoc03.php?documento=" . $row['DOCUMENTO'] . "&cliente=" . $row['codcli'] . "&IDB=$IDB&tipo=80&cajero=" . $row['usuario'] . "&fecha=".$row['FECHA']."  ' target='imprimir.php' onclick=\"window.open(this.href, this.target, ' width=600, height=640,top=20,left=300, menubar=no');return false;\"><img src='../recursos/printer.png' width='20' height='20' alt='' /></a></td>";
+                echo "<td class='success'><a href='../php/impresiondoc03E_1.php?documento=" . $row['DOCUMENTO'] . "&cliente=" . $row['codcli'] . "&IDB=$IDB&tipo=80&cajero=" . $row['usuario'] . "&fecha=" . $row['FECHA'] . "  ' target='imprimir.php' onclick=\"window.open(this.href, this.target, ' width=600, height=640,top=20,left=300, menubar=no');return false;\"><img src='../recursos/printer.png' width='20' height='20' alt='' /></a></td>";
                 echo '</tr>';
             }
         } else {
             echo '<tr>
-		<td colspan="12">No se encontraron resultados</td>
-	</tr>';
+    <td colspan="12">No se encontraron resultados</td>
+  </tr>';
         }
         echo '</table>';
 
@@ -109,11 +109,11 @@ switch ($tipo) {
             ";
         $resultado = mysql_query($registro, $conexion);
         echo '<table class="table table-striped table-condensed table-hover" >
-                <tr>        
+                <tr>
                   <th>TIPO</th>
                   <th>NOTACREDITO</th>
                   <th>FECHA</th>
-                  <th>RUC</th>  
+                  <th>RUC</th>
                   <th>NOMBRE</th>
                   <th>CANTIDAD</th>
                   <th>VTA.BTA</th>
@@ -127,11 +127,11 @@ switch ($tipo) {
                 </tr>';
         if (mysql_num_rows($resultado) > 0) {
             while ($row = mysql_fetch_array($resultado)) {
-                echo '<tr> 
+                echo '<tr>
                     <td class="danger"><b>' . $row['TIPO'] . '</b></td>
-                    <td class="danger"><b>' . $row['DOCUMENTO'] . '</b></td>  
+                    <td class="danger"><b>' . $row['DOCUMENTO'] . '</b></td>
                     <td class="danger">' . $row['FECHA'] . '</td>
-                    <td class="danger">' . $row['CEDULA'] . '</td>  
+                    <td class="danger">' . $row['CEDULA'] . '</td>
                     <td class="danger">' . $row['NOMBRE'] . '</td>
                     <td class="danger">' . number_format($row['cantidad'], 0, '.', ',') . '</td>
                     <td class="danger">' . number_format($row['VENTBTA'], 2, '.', ',') . '</td>
@@ -139,15 +139,15 @@ switch ($tipo) {
                     <td class="danger">' . number_format($row['VENTANET'], 2, '.', ',') . '</td>
                     <td class="danger"><b>' . number_format($row['IVA'], 2, '.', ',') . '</b></td>
                     <td class="danger"><b>' . number_format($row['TOTAL'], 2, '.', ',') . '</b></td>
-                    <td class="danger">' . $row['docmodi'] . '</td>                           
+                    <td class="danger">' . $row['docmodi'] . '</td>
                    <td class="danger">' . $row['usuario'] . '</td>';
-                echo "<td class='danger'><a href='../php/impresiondoc03.php?documento=" . $row['DOCUMENTO'] . "&cliente=" . $row['CEDULA'] . "&IDB=$IDB&tipo=22&cajero=" . $row['usuario'] . "&fecha=".$row['FECHA']."&docm=".$row['docmodi']."   ' target='imprimir.php' onclick=\"window.open(this.href, this.target, ' width=600, height=640,top=20,left=300, menubar=no');return false;\"><img src='../recursos/printer.png' width='20' height='20' alt='' /></a></td>";
+                echo "<td class='danger'><a href='../php/impresiondoc03E_1.php?documento=" . $row['DOCUMENTO'] . "&cliente=" . $row['CEDULA'] . "&IDB=$IDB&tipo=22&cajero=" . $row['usuario'] . "&fecha=" . $row['FECHA'] . "&docm=" . $row['docmodi'] . "   ' target='imprimir.php' onclick=\"window.open(this.href, this.target, ' width=600, height=640,top=20,left=300, menubar=no');return false;\"><img src='../recursos/printer.png' width='20' height='20' alt='' /></a></td>";
                 echo '</tr>';
             }
         } else {
             echo '<tr>
-		<td colspan="14">No se encontraron resultados</td>
-	</tr>';
+    <td colspan="14">No se encontraron resultados</td>
+  </tr>';
         }
         echo '</table>';
         break;

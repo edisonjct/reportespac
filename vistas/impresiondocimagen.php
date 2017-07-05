@@ -17,7 +17,7 @@ $admin = $_GET['a'];
         <?php include_once './Header.php';?>
     </div>
     <body>
-        <object type="text/html" data="impresiondoc01.php?IDB=<?php echo $IDB;?>&ID=<?php echo $ID;?>&admin=<?php echo $admin;?>" width="100%" height="580"></object>        
+        <object type="text/html" data="impresiondoc01imagen.php?IDB=<?php echo $IDB;?>&ID=<?php echo $ID;?>&admin=<?php echo $admin;?>" width="100%" height="580"></object>        
     </body>
     <footer>
         

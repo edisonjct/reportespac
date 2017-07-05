@@ -20,7 +20,7 @@ include_once '../php/conexion.php';
         <script type="text/javascript" src="../js/myjava.js"></script>
         <script></script>
     </head>
-    <body onload="cargaventadiaria();">
+    <body onload="cargaventadiariaf();">
         <br>
         <div class="container">    
             <form class="form-inline" role="form" method="GET">
@@ -50,7 +50,7 @@ include_once '../php/conexion.php';
                             </span>
                         </div>                        
                     </div>
-                    <button type="button" class="btn btn-primary" id="bt-buscatipodoc">
+                    <button type="button" class="btn btn-primary" id="bt-buscatipodocf">
                         <span class="glyphicon glyphicon-search"></span> Buscar
                     </button>                                                                 
                 </center>

@@ -2,7 +2,7 @@
 include_once './Header.php';
 include '../php/conexion.php';
 $IDB = $_GET['IDB'];
-$UID = $_GET['UID'];
+$UID = $_GET['ID'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@ $UID = $_GET['UID'];
                         <input type="file" id="csv" name="csv" class="btn btn-default"/>                      
                     </div> 
                     <div class="form-group">                        
-                        <input id="submit" type="submit" value="Subir" class="btn btn-primary"/>                      
+                        <button id="submit" class="btn btn-primary">Subir</button>
                     </div>                                     
                 </center>
             </form>      
